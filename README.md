@@ -38,9 +38,9 @@ Transformo processos manuais de um grupo de concessionárias com mais de 20 loja
 <sub>do formulário em papel ao fluxo com<br>assinatura digital, gráficos e relatórios</sub>
 </td>
 <td align="center" width="33%">
-<h1>6 relatórios</h1>
-<b>consolidados por dia</b><br>
-<sub>DealerNet, Oracle e SQL Server<br>numa única planilha, sem intervenção</sub>
+<h1>1 → 20 lojas</h1>
+<b>Pulse CRM</b><br>
+<sub>leads de todas as lojas e marcas do grupo<br>chegando ao CRM com rastreio lead a lead</sub>
 </td>
 </tr>
 <tr>
@@ -62,7 +62,7 @@ Transformo processos manuais de um grupo de concessionárias com mais de 20 loja
 </tr>
 </table>
 
-<div align="center"><b>8 automações</b> e <b>6 aplicações web</b> em produção · Financeiro · Fiscal · Comercial · Pós-venda · Peças · TI · RH · SSMA</div>
+<div align="center"><b>8 automações</b> e <b>5 aplicações web</b> em produção · Financeiro · Fiscal · Comercial · Pós-venda · Peças · TI · RH · SSMA</div>
 
 ---
 
@@ -155,6 +155,48 @@ flowchart LR
 
 ---
 
+### 💙 Pulse CRM · Central de Leads
+
+> **Um app desktop que enviava leads para uma única loja virou uma plataforma web que atende as 20 lojas e marcas do grupo.**
+
+<table>
+<tr>
+<td width="50%"><img src="imagens/pulse-central.png" alt="Central de operação do Pulse CRM com nova importação e histórico"></td>
+<td width="50%"><img src="imagens/pulse-importacao.png" alt="Acompanhamento em tempo real de uma importação no Pulse CRM"></td>
+</tr>
+<tr>
+<td align="center"><b>Central de operação</b></td>
+<td align="center"><b>Importação em tempo real</b></td>
+</tr>
+</table>
+
+Os leads chegam de montadoras e portais como Webmotors, UOL, Mercado Livre e Facebook, cada um numa planilha diferente. Antes, eram enviados ao CRM Syonet por um script desktop fixo em **uma loja**, com a senha da API dentro do código. Reescrevi tudo como uma plataforma web:
+
+```mermaid
+flowchart LR
+    P["📄 Planilha de leads<br>qualquer formato"] --> R["🔎 Reconhecimento<br>automático de colunas"]
+    R --> V["✔️ Validação e<br>normalização"]
+    V --> Q["⚙️ Fila em<br>segundo plano"]
+    Q --> API["🔗 API Syonet<br>loja e equipe certas"]
+    API -->|falhou| T["🔁 Nova tentativa<br>até 3 vezes"]
+    T --> API
+    API --> L["📡 Resultado ao vivo<br>lead a lead"]
+    L --> X["📥 Excel e CSV"]
+```
+
+- **Lê planilhas de qualquer formato:** encontra o cabeçalho mesmo com linhas extras antes da tabela, entende nomes alternativos (`Cliente`, `E-mail`, `WhatsApp`, `Veículo de interesse`), identifica colunas pelo conteúdo quando não há cabeçalho e separa DDI e DDD do telefone. Se a estrutura for ambígua, **para e explica o motivo** em vez de mandar dado errado para o CRM
+- **Destino escolhido pelo usuário:** loja ou marca, origem, mídia e equipe que vai atender o lead
+- **Monitoramento em tempo real:** barra de progresso e resultado de cada lead com número do evento gerado no Syonet, status HTTP e motivo da falha
+- **Novas tentativas automáticas** e histórico completo de importações, exportável em Excel e CSV
+- **Perfis de acesso:** operadores só veem suas importações e as lojas liberadas para eles; administradores veem e gerenciam tudo
+- **Segurança:** credenciais da API fora do código, login individual e recuperação de senha
+- Vídeo institucional e demonstração em vídeo para o treinamento das equipes
+- Roda como serviço no Windows, com reinício automático se o processo cair
+
+`Django` `Python` `pandas` `API REST` `SQLite` `Waitress` `NSSM`
+
+---
+
 ## ⚙️ Outras automações
 
 <table>
@@ -218,34 +260,6 @@ Busca os XMLs das notas recebidas pelos CNPJs do grupo na API da Qive e compara 
 
 `Node.js` `Express` `SQL Server` `ExcelJS` `fast-xml-parser` `Nginx`
 
-### 🚘 Entrega RENAVE e ATPV-e
-Consulta a entrega de veículos zero km pelo chassi na API do RENAVE (SERPRO), registra a entrega e baixa o ATPV-e em PDF.
-
-- Autenticação **mTLS** com certificado digital, mantido somente no backend
-- Histórico e reimpressão do ATPV-e direto do banco, sem nova chamada ao SERPRO
-- Modo simulado para testar o fluxo inteiro sem a API real
-
-`Node.js` `mTLS` `SQL Server`
-
-### 📇 CRM de Leads
-Substituiu um script desktop: os usuários enviam planilhas de leads de montadoras e portais, que são validadas e enviadas ao CRM Syonet via API, para **as 20 lojas e todas as marcas** do grupo.
-
-- Perfis de administrador e operador, com lojas liberadas por usuário
-- Processamento em segundo plano com barra de progresso e novas tentativas automáticas
-
-`Django` `Python` `pandas` `SQLite` `Waitress`
-
-<table>
-<tr>
-<td width="50%"><img src="imagens/renave.png" alt="Tela de acesso do sistema de entregas RENAVE"></td>
-<td width="50%"><img src="imagens/crm-leads.png" alt="Tela de acesso do CRM de leads"></td>
-</tr>
-<tr>
-<td align="center"><b>Entrega RENAVE</b></td>
-<td align="center"><b>CRM de Leads</b></td>
-</tr>
-</table>
-
 ### 📅 Reserva de Salas
 Agenda compartilhada das cinco salas da empresa, publicada com HTTPS.
 
@@ -271,11 +285,10 @@ O site da capa deste portfólio: escultura 3D de pontos em Canvas que reage ao s
 flowchart LR
     U["👥 Usuários"] --> N["Nginx"]
     N --> S1["Conciliação Fiscal"]
-    N --> S2["RENAVE"]
-    N --> S3["CRM de Leads"]
+    N --> S3["Pulse CRM"]
     N --> S4["Auditorias SSMA"]
-    S1 & S2 & S3 & S4 --> DB[("SQL Server<br>Oracle")]
-    M["🔁 Health check"] -.reinicia.-> S1 & S2 & S3 & S4
+    S1 & S3 & S4 --> DB[("SQL Server<br>Oracle")]
+    M["🔁 Health check"] -.reinicia.-> S1 & S3 & S4
     B["💾 Backup automático"] -.-> DB
 ```
 
