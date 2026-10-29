@@ -11,10 +11,9 @@ Transformo processos manuais de um grupo de concessionárias com mais de 20 loja
 ![Node.js](https://img.shields.io/badge/Node.js-339933?style=flat-square&logo=nodedotjs&logoColor=white)
 ![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=flat-square&logo=typescript&logoColor=white)
 ![Python](https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=python&logoColor=white)
-![Django](https://img.shields.io/badge/Django-092E20?style=flat-square&logo=django&logoColor=white)
-![Flask](https://img.shields.io/badge/Flask-000000?style=flat-square&logo=flask&logoColor=white)
 ![React](https://img.shields.io/badge/React-20232A?style=flat-square&logo=react&logoColor=61DAFB)
 ![Playwright](https://img.shields.io/badge/Playwright-2EAD33?style=flat-square&logo=playwright&logoColor=white)
+![Django](https://img.shields.io/badge/Django-092E20?style=flat-square&logo=django&logoColor=white)
 ![SQL Server](https://img.shields.io/badge/SQL_Server-CC2927?style=flat-square&logo=microsoftsqlserver&logoColor=white)
 ![Oracle](https://img.shields.io/badge/Oracle-F80000?style=flat-square&logo=oracle&logoColor=white)
 ![Nginx](https://img.shields.io/badge/Nginx-009639?style=flat-square&logo=nginx&logoColor=white)
@@ -28,76 +27,167 @@ Transformo processos manuais de um grupo de concessionárias com mais de 20 loja
 
 <table>
 <tr>
-<td align="center" width="25%"><h2>-90%</h2>tempo na análise de risco<br><sub>10 min → 1 min por veículo</sub></td>
-<td align="center" width="25%"><h2>-95%</h2>tempo no checklist de entrega<br><sub>5 min → 15 s por veículo</sub></td>
-<td align="center" width="25%"><h2>45 → &lt;5 min</h2>planilha de estoque<br><sub>pronta antes do expediente</sub></td>
-<td align="center" width="25%"><h2>400+</h2>veículos de frota por semana<br><sub>tratados sem trabalho manual</sub></td>
+<td align="center" width="33%">
+<h1>45 → &lt;5 min</h1>
+<b>Planilha de Estoque</b><br>
+<sub>atualizada sozinha todo dia às 05h40,<br>pronta antes do expediente</sub>
+</td>
+<td align="center" width="33%">
+<h1>100% digital</h1>
+<b>Auditorias SSMA Unipetro</b><br>
+<sub>do formulário em papel ao fluxo com<br>assinatura digital, gráficos e relatórios</sub>
+</td>
+<td align="center" width="33%">
+<h1>6 relatórios</h1>
+<b>consolidados por dia</b><br>
+<sub>DealerNet, Oracle e SQL Server<br>numa única planilha, sem intervenção</sub>
+</td>
+</tr>
+<tr>
+<td align="center">
+<h1>-90%</h1>
+<b>Análise de Risco</b><br>
+<sub>10 min → 1 min por veículo faturado</sub>
+</td>
+<td align="center">
+<h1>-95%</h1>
+<b>Checklist de Entrega</b><br>
+<sub>5 min → 15 s por veículo faturado</sub>
+</td>
+<td align="center">
+<h1>400+</h1>
+<b>veículos de frota por semana</b><br>
+<sub>tratados sem trabalho manual</sub>
+</td>
 </tr>
 </table>
 
-**9 automações** e **6 aplicações web** em produção, atendendo as áreas Financeira, Fiscal, Comercial, Pós-venda, Peças, TI e RH.
+<div align="center"><b>8 automações</b> e <b>6 aplicações web</b> em produção · Financeiro · Fiscal · Comercial · Pós-venda · Peças · TI · RH · SSMA</div>
 
 ---
 
-## ⚙️ Automações
+## ⭐ Projetos em destaque
 
-### Antes e depois
+### 📦 Automação da Planilha de Estoque
 
-<table>
-<tr>
-<td width="33%"><img src="imagens/tempo-estoque.png" alt="Planilha de estoque: 45 minutos antes, menos de 5 minutos com a automação"></td>
-<td width="33%"><img src="imagens/tempo-risco.png" alt="Análise de risco: 10 minutos antes, 1 minuto com a automação"></td>
-<td width="33%"><img src="imagens/tempo-entrega.png" alt="Checklist de entrega: 5 minutos antes, 15 segundos com a automação"></td>
-</tr>
-<tr>
-<td align="center"><b>Planilha de Estoque</b></td>
-<td align="center"><b>Análise de Risco</b></td>
-<td align="center"><b>Checklist de Entrega</b></td>
-</tr>
-</table>
+> **De ~45 minutos de trabalho manual para menos de 5 minutos, de madrugada, sem ninguém.**
 
-### 📦 Atualização da Planilha de Estoque
-> **~45 min manuais → menos de 5 min, de madrugada, sem ninguém.**
+<img src="imagens/tempo-estoque.png" alt="Comparação: 45 minutos no processo manual e menos de 5 minutos com a automação" width="420" align="right">
 
-A planilha que TI e Financeiro usam para conferir o estoque com o BI da Dealer Intelligence era montada à mão todo dia. Agora um robô entra no DealerNet sozinho, baixa os relatórios de estoque, propostas, pedidos e títulos a pagar, cruza com Oracle e SQL Server, atualiza todas as abas e manda a planilha por e-mail. Quando a equipe chega, ela já está pronta.
+TI e Financeiro usam a planilha de estoque todo dia para conferir os números com o BI da Dealer Intelligence. Antes, alguém precisava entrar no DealerNet, baixar relatório por relatório, rodar consultas e colar tudo nas abas certas, todo dia.
+
+Hoje, às **05h40**, um robô faz tudo sozinho:
+
+1. Abre o DealerNet no Chrome, faz login e **se recupera sozinho** se a sessão expirar no meio do caminho
+2. Baixa **Estoque de Veículos**, **Propostas e Pedidos** e **Títulos a Pagar**, calculando os períodos dos últimos 6 meses
+3. Gera o estoque direto do **Oracle (NBS)** e os dados de peças do **Oracle** e do **SQL Server**
+4. Atualiza as **6 abas** da planilha do mês
+5. Envia a planilha final por **e-mail** para TI e Financeiro
+
+<br clear="right">
 
 ```mermaid
 flowchart LR
-    A[🌙 Agendamento<br>de madrugada] --> B[🤖 Robô Playwright<br>baixa relatórios do DealerNet]
-    B --> C[(Oracle +<br>SQL Server)]
-    C --> D[📊 Atualiza as abas<br>da planilha]
-    D --> E[📧 E-mail para<br>TI e Financeiro]
+    T["⏰ 05h40<br>Agendador"] --> R["🤖 Robô Playwright"]
+    R --> D1["Estoque de Veículos"]
+    R --> D2["Propostas e Pedidos"]
+    R --> D3["Títulos a Pagar"]
+    O[("Oracle NBS")] --> D4["Estoque NBS<br>Peças NBS"]
+    S[("SQL Server")] --> D5["Peças DealerNet"]
+    D1 & D2 & D3 & D4 & D5 --> V{"✔️ Validação<br>em cópia temporária"}
+    V -->|tudo certo| P["📊 Planilha do mês<br>6 abas atualizadas"]
+    V -->|algo errado| X["🛑 Planilha intacta<br>+ log, print e trace"]
+    P --> E["📧 E-mail para<br>TI e Financeiro"]
 ```
 
-`TypeScript` `Playwright` `ExcelJS` `Oracle` `SQL Server` `SMTP`
+**Feita para nunca estragar a planilha:**
+- Toda a atualização acontece numa **cópia temporária**, que só substitui a original depois de recalcular e validar linhas e colunas
+- Se um relatório vier vazio ou inválido, se for de outra execução ou se a planilha estiver aberta no Excel, **nada é alterado**
+- **Supervisor** encerra a execução após 10 minutos sem progresso e libera uma nova; execuções simultâneas são bloqueadas
+- Cópia de segurança local da planilha caso a rede fique indisponível
+- Em caso de erro: log, screenshot e trace do Playwright (sem capturar a senha) para diagnóstico rápido
+- O e-mail só sai depois que **todas** as etapas terminarem com sucesso
+- Testes do supervisor, da recuperação de sessão e dos downloads
+
+`TypeScript` `Node.js` `Playwright` `ExcelJS` `Oracle` `SQL Server` `SMTP` `Agendador de Tarefas`
+
+---
+
+### 🦺 Sistema de Auditorias SSMA · Unipetro
+
+> **Auditorias de Saúde, Segurança e Meio Ambiente saíram do papel para um fluxo digital completo, rastreável e com assinatura.**
+
+<table>
+<tr>
+<td width="50%"><img src="imagens/unipetro-dashboard.png" alt="Dashboard do sistema de auditorias SSMA"></td>
+<td width="50%"><img src="imagens/unipetro-nova-auditoria.png" alt="Formulário de nova auditoria FO-SSMA-PA-025"></td>
+</tr>
+<tr>
+<td align="center"><b>Dashboard</b></td>
+<td align="center"><b>Nova auditoria</b></td>
+</tr>
+</table>
+
+O formulário **FO-SSMA-PA-025 · Comportamento Inseguro / Intervenção** era preenchido à mão nos postos de operação. Construí do zero um sistema web completo, do frontend ao banco, que digitaliza o processo inteiro:
+
+```mermaid
+flowchart LR
+    A["👷 Auditor<br>preenche no posto"] --> R["📝 Rascunho"]
+    R --> E["📤 Envia para<br>assinatura"]
+    E --> F{"🧑‍⚖️ Fiscal<br>revisa"}
+    F -->|devolve| C["↩️ Auditor corrige"]
+    C --> E
+    F -->|assina| OK["✅ Finalizada"]
+    OK --> G["📈 Gráficos<br>gerenciais"]
+    OK --> X["📄 PDF e Excel"]
+```
+
+- **Formulário digital** com desvios comportamentais em 6 categorias (A a F), quantidade e observação por item e resumo em tempo real
+- **Fluxo de assinatura:** auditor envia, fiscal revisa e assina (assinatura cursiva gerada pelo nome ou desenhada na tela) ou devolve para correção
+- **6 perfis de acesso combináveis:** Auditor, Fiscal, Gráficos, Visualização, Criar usuário e Administrador, com as regras aplicadas no backend
+- **Gráficos gerenciais** de desvios por classe, posto, auditor, período, turno, área e empresa contratada
+- **Relatórios em PDF** e **exportação para Excel** das auditorias finalizadas, com filtros
+- Rascunhos, auditorias devolvidas, pendentes e finalizadas, cada uma com sua tela
+- Guia do usuário e vídeos de demonstração para o treinamento das equipes
+- Publicado como serviço no Windows Server, com o backend servindo o frontend compilado
+
+`React 18` `Vite` `React Router` `Node.js` `Express` `JWT` `SQL Server` `jsPDF`
+
+---
+
+## ⚙️ Outras automações
+
+<table>
+<tr>
+<td width="50%"><img src="imagens/tempo-risco.png" alt="Análise de risco: 10 minutos antes, 1 minuto com a automação"></td>
+<td width="50%"><img src="imagens/tempo-entrega.png" alt="Checklist de entrega: 5 minutos antes, 15 segundos com a automação"></td>
+</tr>
+<tr>
+<td align="center"><b>Análise de Risco · -90%</b></td>
+<td align="center"><b>Checklist de Entrega · -95%</b></td>
+</tr>
+</table>
 
 ### 📄 Emissão de Análise de Risco
-> **~10 min → ~1 min por veículo faturado. Redução de 90%.**
+> **~10 min → ~1 min por veículo faturado.**
 
-O Financeiro precisava de um documento de análise de risco que o ERP NBS não conseguia gerar de forma dinâmica. Desenvolvi um aplicativo desktop que consulta os dados do veículo e do cliente no ERP e gera o documento pronto a partir de um template Word.
+O Financeiro precisava de um documento de análise de risco que o ERP NBS não gerava de forma dinâmica. Aplicativo desktop que consulta os dados no ERP e gera o documento pronto a partir de um template Word.
 
 `Python` `Tkinter` `Oracle` `docx` `PyInstaller`
 
 ### ✅ Checklist de Entrega de Veículos
-> **~5 min → ~15 s por veículo. Redução de 95%.**
+> **~5 min → ~15 s por veículo faturado.**
 
-Mesma limitação do NBS, outro documento: o checklist de entrega era preenchido à mão para cada veículo faturado. A automação busca as informações no sistema e gera o checklist em PDF em segundos.
+Mesma limitação do NBS, outro documento: o checklist de entrega era preenchido à mão. Agora sai em PDF em segundos, com os dados do sistema.
 
 `Python` `Oracle` `docxtpl` `docx2pdf`
 
 ### 🚗 Remoção de Entradas de Frota
 > **Mais de 400 veículos por semana.**
 
-Veículos de frota chegam junto com os arquivos de faturamento da montadora e entram automaticamente no DealerNet, mas precisam ser removidos depois. A automação identifica essas entradas e faz a exclusão em lote, com log de cada execução.
+Veículos de frota chegam com os arquivos de faturamento da montadora e entram automaticamente no DealerNet, mas precisam ser removidos depois. A automação identifica e exclui essas entradas em lote, com log de cada execução.
 
 `Python` `pandas` `pyodbc` `SQL Server`
-
-### 🎟️ Emissão de Vouchers de Revisão
-Criada para um evento de pós-venda: a equipe digita o número da proposta e o sistema busca os dados no ERP (DealerNet ou NBS) e gera o voucher de revisão do cliente em PDF, sem preenchimento manual durante o atendimento.
-
-`Flask` `SQL Server` `Oracle` `PyPDF`
-
-<img src="imagens/voucher.png" alt="Tela do gerador de vouchers de revisão" width="500">
 
 ### 📬 Relatórios automáticos
 
@@ -108,27 +198,21 @@ Criada para um evento de pós-venda: a equipe digita o número da proposta e o s
 | Limites de Crédito dos clientes | Financeiro | Quinzenal |
 | Recebimentos por Proposta de venda | Financeiro | Sob demanda |
 
-Todos consultam o ERP, consolidam os dados, geram a planilha e enviam por e-mail, sem extração manual.
+Consultam o ERP, consolidam os dados, geram a planilha e enviam por e-mail, sem extração manual.
 
 `Python` `pandas` `SQL Server` `Oracle` `SMTP`
 
-<details>
-<summary><b>🖼️ Ver o catálogo de automações no Hub</b></summary>
-<br>
-<img src="imagens/hub-automacoes.png" alt="Catálogo de automações no Hub de Projetos">
-</details>
-
 ---
 
-## 🖥️ Aplicações web
+## 🖥️ Outras aplicações web
 
 ### 🧾 Conciliação Fiscal de NF-e
-Busca os XMLs das notas recebidas pelos CNPJs do grupo na API da Qive e compara **item a item** com o que foi lançado no ERP: CFOP, CST/CSOSN, NCM, bases e alíquotas de ICMS e ICMS-ST, quantidades e valores. As divergências saem em Excel para a equipe fiscal.
+Busca os XMLs das notas recebidas pelos CNPJs do grupo na API da Qive e compara **item a item** com o lançamento no ERP: CFOP, CST/CSOSN, NCM, bases e alíquotas de ICMS e ICMS-ST, quantidades e valores. As divergências saem em Excel para a equipe fiscal.
 
 - Classificação automática entre notas de **peças, veículos e consumo**, com pareamento de veículos pelo chassi
-- Cadastros de DE-PARA de CFOP e CST/CSOSN editáveis pela própria equipe fiscal
+- Cadastros de DE-PARA de CFOP e CST/CSOSN editáveis pela equipe fiscal
 - Relatório consolidado das notas sem entrada no ERP para todas as empresas do grupo
-- Roda como serviço no Windows atrás do Nginx, com health check e recuperação automática
+- Serviço no Windows atrás do Nginx, com health check e recuperação automática
 
 <img src="imagens/conciliacao-fiscal.png" alt="Tela da Conciliação Fiscal" width="700">
 
@@ -144,11 +228,10 @@ Consulta a entrega de veículos zero km pelo chassi na API do RENAVE (SERPRO), r
 `Node.js` `mTLS` `SQL Server`
 
 ### 📇 CRM de Leads
-Substituiu um script desktop: os usuários enviam planilhas de leads de montadoras e portais, que são validadas e enviadas ao CRM Syonet via API, agora para **as 20 lojas e todas as marcas** do grupo.
+Substituiu um script desktop: os usuários enviam planilhas de leads de montadoras e portais, que são validadas e enviadas ao CRM Syonet via API, para **as 20 lojas e todas as marcas** do grupo.
 
 - Perfis de administrador e operador, com lojas liberadas por usuário
 - Processamento em segundo plano com barra de progresso e novas tentativas automáticas
-- Credenciais fora do código, em variáveis de ambiente
 
 `Django` `Python` `pandas` `SQLite` `Waitress`
 
@@ -163,23 +246,17 @@ Substituiu um script desktop: os usuários enviam planilhas de leads de montador
 </tr>
 </table>
 
-### 🦺 Auditorias SSMA
-Registro padronizado de desvios, ações e evidências em auditorias de Saúde, Segurança e Meio Ambiente, com assinatura do fiscal.
-
-`React` `Vite` `Node.js` `Express` `JWT` `SQL Server`
-
 ### 📅 Reserva de Salas
 Agenda compartilhada das cinco salas da empresa, publicada com HTTPS.
 
-- Reservas recorrentes de até 90 dias com bloqueio de sobreposição no banco: um conflito cancela a criação inteira
+- Reservas recorrentes de até 90 dias com bloqueio de sobreposição no banco
 - Senhas com PBKDF2-SHA256, cookies `Secure`/`HttpOnly`/`SameSite=Strict` e limite de tentativas de login
-- Exportação para calendário (`.ics`), modo escuro e layout responsivo
-- 13 testes de integração, incluindo conflitos simultâneos
+- Exportação para calendário (`.ics`), modo escuro e 13 testes de integração
 
 `Cloudflare D1` `Node.js` `Drizzle`
 
 ### ✨ Hub de Projetos
-O site da capa deste portfólio: apresenta o portfólio digital do grupo, com uma escultura 3D de pontos em Canvas que reage ao scroll e ao ponteiro e a comparação animada de tempo de cada processo.
+O site da capa deste portfólio: escultura 3D de pontos em Canvas que reage ao scroll e ao ponteiro e comparação animada de tempo de cada processo.
 
 - Desenho em Canvas otimizado de **14,7 ms para cerca de 1,9 ms** por quadro
 - Respeita a preferência de movimento reduzido e pausa as animações fora da tela
@@ -192,27 +269,26 @@ O site da capa deste portfólio: apresenta o portfólio digital do grupo, com um
 
 ```mermaid
 flowchart LR
-    U[👥 Usuários<br>das lojas] --> N[Nginx]
-    N --> S1[Conciliação Fiscal]
-    N --> S2[RENAVE]
-    N --> S3[CRM de Leads]
-    N --> S4[Auditorias SSMA]
-    S1 & S2 & S3 & S4 --> DB[(SQL Server<br>Oracle)]
-    M[🔁 Monitor<br>health check] -.reinicia.-> S1 & S2 & S3 & S4
-    B[💾 Backup<br>automático] -.-> DB
+    U["👥 Usuários"] --> N["Nginx"]
+    N --> S1["Conciliação Fiscal"]
+    N --> S2["RENAVE"]
+    N --> S3["CRM de Leads"]
+    N --> S4["Auditorias SSMA"]
+    S1 & S2 & S3 & S4 --> DB[("SQL Server<br>Oracle")]
+    M["🔁 Health check"] -.reinicia.-> S1 & S2 & S3 & S4
+    B["💾 Backup automático"] -.-> DB
 ```
 
 - Aplicações publicadas no Windows Server como serviços (NSSM e Agendador de Tarefas), atrás do Nginx
 - Health check com recuperação automática, painel de operação e scripts de validação
-- Backup automatizado dos bancos
-- Segredos centralizados fora dos projetos, nunca no código-fonte
+- Backup automatizado dos bancos e segredos centralizados fora do código-fonte
 - Documentação técnica e manual de cada sistema
 
 ---
 
 <div align="center">
 
-<sub>Sistemas desenvolvidos para uso interno do Grupo Toriba. O código-fonte e os dados pertencem à empresa e não são públicos.</sub>
+<sub>Sistemas desenvolvidos para uso interno. O código-fonte e os dados pertencem às empresas e não são públicos.</sub>
 
 📫 **gabrielsaraivabr@gmail.com**
 
