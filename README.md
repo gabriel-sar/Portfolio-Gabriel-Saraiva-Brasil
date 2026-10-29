@@ -4,7 +4,7 @@
 
 # Gabriel Saraiva
 
-**Desenvolvedor de sistemas e automações · Grupo Toriba**
+**Sistemas e automações · Grupo Toriba**
 
 Transformo processos manuais de um grupo de concessionárias com mais de 20 lojas<br>em sistemas web, integrações e robôs que trabalham sozinhos.
 
